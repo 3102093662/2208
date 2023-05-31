@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: url(./1.png);
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            height: 200px;
+            line-height: 200px;
+        }
+        .sj {
+            text-align: right;
+            padding-right: 50px;
+            margin: 100px 0;
+        }
+        .flex {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        ul {
+            display: flex;
+            justify-content: flex-start;
+            align-content: center;
+            flex-wrap: wrap;
+            width: 50%;
+        }
+        li {
+            list-style: none;
+            width: 20%;
+            text-align: center;
+            font-size: 18px;
+        }
+        .right-top {
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+        .right-bot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            border: none;
+            border-radius: 20px;
+            height: 40px;
+            padding: 0 20px;
+            margin: 0 10px;
+            background-color: rgb(125, 209, 0);
+            color: #fff;
+        }
+        .wzjb {
+            /* 设置文本高度和行高 */
+            height: 50px;
+            line-height: 50px;
+            /* 设置文本不透明 */
+            color: transparent;
+            /* 设置背景渐变色 */
+            /* 设置背景颜色裁剪方式为文本 */
+            -webkit-background-clip: text !important;
+            background-clip: text;
+        }
+        .big {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1>H2208B点名表格</h1>
+    <p class="sj">sj</p>
+    <div class="flex">
+        <ul>
+        </ul>
+        <div class="right">
+            <div class="right-top">
+                天选之人：<span class="wzjb big">123</span>
+            </div>
+            <div class="right-bot">
+                <button id="one">单人点名</button>
+                <button id="two">双人点名</button>
+                <button id="man">男生点名</button>
+                <button id="woman">女生点名</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 最新时间 
+    let sj = document.getElementsByClassName('sj')
+    const now = new Date().toLocaleString()
+    sj[0].innerHTML = `时间：${now}`
+    setInterval(function () {
+        const now = new Date().toLocaleString()
+        sj[0].innerHTML = `时间：${now}`
+    }, 1000);
+    // 渲染列表 
+    let arr = [
+        { name: '王师琦', gender: '男' },
+        { name: '包胜利', gender: '男' },
+        { name: '郭俊·', gender: '男' },
+        { name: '张嘉宁', gender: '男' },
+        { name: '杨佳润', gender: '女' },
+        { name: '步旭阳', gender: '男' },
+        { name: '王彦凯', gender: '男' },
+        { name: '贾柏林', gender: '男' },
+        { name: '师福齐', gender: '男' },
+        { name: '郑国均', gender: '男' },
+        { name: '高双娇', gender: '男' },
+        { name: '李思佳', gender: '女' },
+        { name: '张旭', gender: '男' },
+        { name: '党少龙', gender: '男' },
+        { name: '田海霖 ', gender: '男' },
+        { name: '刘集聚', gender: '男' },
+        { name: '宁帅', gender: '男' },
+        { name: '陈雯轩', gender: '女' },
+        { name: '王师林', gender: '男' },
+        { name: '李沛沛', gender: '女' },
+        { name: '崔宇形', gender: '男' },
+        { name: '颜帅', gender: '男' },
+        { name: '李娅', gender: '女' },
+        { name: '何润皓', gender: '男' },
+        { name: '许永智', gender: '男' },
+    ]
+    let ul = document.getElementsByTagName('ul')[0];
+    let ultext = ''
+    for (const i of arr) {
+        console.log(i)
+        const color1 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+        const color2 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+        const style = `background: linear-gradient(to right, ${color1}, ${color2})`
+        ultext += `<li style="${style}"  class='wzjb'>${i.name}</li>`
+    }
+    ul.innerHTML = ultext
+    // // 点击按钮 
+    let buttons = document.getElementsByTagName('button')
+    let big = document.getElementsByClassName('big')[0]
+    // big.innerHTML = <span class="wzjb big" >123</span>
+    console.log(buttons)
+    for (const i of buttons) {
+        // 按钮点击事件 
+        i.onclick = function () {
+            let people = ''
+            let content = arr[Math.floor(Math.random() * arr.length)]
+            const color1 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+            const color2 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+            let style = `background: linear-gradient(to right, ${color1}, ${color2})`
+            if (i.id == 'one') {  //一个人
+                people = `<span class="wzjb big" style="${style}">${content.name}</span>`
+            } else if (i.id == 'two') { //两个人
+
+                for (let i = 0; i < 2; i++) {
+                    let content = arr[Math.floor(Math.random() * arr.length)]
+                    const color1 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+                    const color2 = '#' + Math.floor(Math.random() * 16777215).toString(16)
+                    let style = `background: linear-gradient(to right, ${color1}, ${color2})`
+                    people += `<span class="wzjb big" style="${style}">${content.name}</span>  `
+                }
+                console.log(people)
+            } else if (i.id == 'man') { //男
+                let gender = arr.filter(item => item.gender == '男')
+                content = gender[Math.floor(Math.random() * gender.length)]
+                people = `<span class="wzjb big" style="${style}">${content.name}</span>`
+            } else if (i.id == 'woman') { // 女
+                let gender = arr.filter(item => item.gender == '女')
+                content = gender[Math.floor(Math.random() * gender.length)]
+                people = `<span class="wzjb big" style="${style}">${content.name}</span>`
+            }
+            big.innerHTML = people
+        }
+    }
+</script>
+</html>

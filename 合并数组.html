@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ['a', 'b', 'c', 'd', 'e']
+        let arr2 = ['f', 'g', 'h', 'i', 'j']
+        let arr3 = [...arr, ...arr2]
+        console.log(arr3)
+
+        let arr6 = arr.concat(arr2)
+        console.log(arr6)
+
+         arr.push(...arr2)
+        console.log(arr)
+
+        arr2.unshift(...['a', 'b', 'c', 'd', 'e'])
+        console.log(arr2)
+
+
+
+    </script>
+</body>
+
+</html>
