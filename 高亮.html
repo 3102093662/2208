@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            border: 1px solid #aaa;
+            margin: 10px auto;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="a"></span>
+        <span class="b"></span>
+        <span class="c"></span>
+    </div>
+</body>
+<script>
+    var div = document.getElementsByClassName('box')
+    var span = document.getElementsByTagName('span')
+    div[0].addEventListener('click', function (e) {
+        setTimeout(() => {
+            if (e.target.localName == 'span') {
+                // 变红 
+                // e.target.style.backgroundColor = 'red'
+                // 切换变红 
+                if (e.target.getAttribute('class').includes('red')) {
+                    // e.target.removeClass('red')
+                    e.target.classList.remove('red')
+                } else {
+                    e.target.classList.add('red')
+                }
+            } else {
+                alert('点击了父盒子')
+            }
+        }, 2000);
+
+
+    })
+</script>
+
+</html>
