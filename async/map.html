@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            a: 1,
+            b: 2
+        }
+        const map = new Map([
+            [
+                'name', '张三',
+                'title', 'abc'
+            ]
+
+        ])
+        console.log(map, 'map')
+        let m =new Map()
+        m.set('name','清华大学')
+        console.log(m)
+        let key={
+            school:'SCHOOL',
+        }
+        m.set(key,['北京','伤害','甚至'])
+        console.log(m)
+        m.delete('name')
+        console.log(m)
+        m.clear
+        console.log(m)
+    </script>
+</body>
+
+</html>
